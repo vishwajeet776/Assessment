@@ -14,7 +14,10 @@ public class firstNonRepeatedChar {
         System.out.println(map);
 
        Optional<Map.Entry<Character, Integer>> chr;
-        chr = map.entrySet().stream().filter(ch ->ch.getValue()==1).findFirst();
+        chr = map.entrySet()
+                .stream()
+                .filter(ch ->ch.getValue()==1)
+                .findFirst();
         System.out.println(chr+"  *********************");
 
 

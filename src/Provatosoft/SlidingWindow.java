@@ -1,21 +1,31 @@
 package Provatosoft;
 
-public class SlidingWindow {
+public class SlidingWindow extends RuntimeException {
+
+    public static int temp1(int a){
+        return a;
+    }
     public static void main(String[] args) {
 //        maximum sum of a subarray
 //        of size k
         int[] arr={1,5,7,2,3,4,6};
-        int n= arr.length;
-        int k=3; //size of the window
-        int Window_sum=0;
+        int k=3;
+        int n= arr.length-1;
+
         int maxSum=0;
+        int windowSum=0;
+
         for (int i = 0; i < k; i++) {
-            Window_sum+=arr[i];
+            windowSum+=arr[i];
         }
-        for (int i = k; i < n ; i++) {
-            Window_sum+=arr[i]-arr[i-k];
-            maxSum=Math.max(maxSum,Window_sum);
+
+        for (int i = k; i<n ; i++) {
+            windowSum+=arr[k]-arr[i-k];
+            maxSum=Math.max(windowSum,maxSum);
         }
+
         System.out.println(maxSum);
+
+
     }
 }
