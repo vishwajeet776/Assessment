@@ -10,7 +10,7 @@ class Node{
     }
 }
 
-public class MyLinkedList {
+public class SingularLinkedList {
     Node head;
     public void insertEnd(int data){
         Node newNode=new Node(data);
@@ -26,13 +26,14 @@ public class MyLinkedList {
     }
     public void printList(){
         Node temp=head;
-        if (temp.next == null){
+        if (temp == null){
             System.out.println("empty linked list");
         }
         while(temp !=null){
             System.out.print(temp.data+" ");
             temp=temp.next;
         }
+        System.out.println();
     }
     public void addFront(int data){
 
@@ -62,12 +63,11 @@ public class MyLinkedList {
         int count=0;
         Node temp=head;
         if (temp == null){
-            System.out.println("empty linked list");
             return false;
         }
         while (temp !=null){
             if (temp.data==num){
-//                System.out.println("found at "+count+" number");
+                System.out.println("found at "+count+" number");
                 return true;
             }
             temp=temp.next;
@@ -89,9 +89,30 @@ public class MyLinkedList {
         prev.next=current.next;
     }
 
+    private int NthNode(int k) {
+
+        if (k <= 0) {
+            throw new IllegalArgumentException("Index must be >= 1 for 1-based indexing");
+        }
+
+        Node temp=head;
+        int count=1;
+        while (temp !=null){
+
+            if (count==k) {
+                return temp.data;
+            }
+            count++;
+            temp=temp.next;
+
+        }
+        throw new IndexOutOfBoundsException();
+    }
+
+
     public static void main(String[] args) {
 
-        MyLinkedList linkedList=new MyLinkedList();
+        SingularLinkedList linkedList=new SingularLinkedList();
 
         linkedList.insertEnd(5);
         linkedList.insertEnd(7);
@@ -100,15 +121,14 @@ public class MyLinkedList {
         linkedList.insertEnd(1);
         linkedList.insertEnd(9);
 
-        linkedList.printList();
-        System.out.println();
+//        linkedList.printList();
+//        System.out.println();
         linkedList.insertEnd(2);
 
-        linkedList.printList();
-        System.out.println();
+//        linkedList.printList();
+//        System.out.println();
         linkedList.addFront(10);
-        linkedList.printList();
-        System.out.println();
+//        linkedList.printList();
 
 //        System.out.println(linkedList.size());
 //        System.out.println(linkedList.search(8));
@@ -118,6 +138,46 @@ public class MyLinkedList {
         linkedList.delete(8);
         linkedList.printList();
 
+
+        System.out.println(linkedList.NthNode(3));
+
+        linkedList.reverse();
+        linkedList.printList();
+
+        linkedList.addFront(4);
+
+        linkedList.printList();
+
+        System.out.println(linkedList.middle());
+
+
+    }
+
+    private int middle() {
+
+        Node slow=head;
+        Node fast=head;
+
+        while (fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        return slow.data;
+    }
+
+    private void reverse() {
+
+        Node prev=null;
+        Node current=head;
+        Node next;
+
+        while (current!=null){
+            next = current.next;
+            current.next=prev;
+            prev=current;
+            current=next;
+        }
+        head=prev;
     }
 
 
