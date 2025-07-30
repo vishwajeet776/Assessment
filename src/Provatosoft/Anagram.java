@@ -1,6 +1,6 @@
 package Provatosoft;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class Anagram {
     public static void main(String[] args) {
@@ -15,5 +15,7 @@ public class Anagram {
         }else {
             System.out.println("not");
         }
+        Queue<Integer> q=new LinkedList<>();
+
     }
 }

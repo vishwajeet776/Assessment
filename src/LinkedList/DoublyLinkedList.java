@@ -1,6 +1,5 @@
 package LinkedList;
-
-class DNode{
+ class DNode{
     int data;
     DNode prev;
     DNode next;
@@ -41,8 +40,65 @@ public class DoublyLinkedList {
         System.out.println();
         System.out.println(Dll.NthNodeEnd(3));
 
+//        search
+        System.out.println(Dll.search(2));
+//        delete
 
     }
+
+    public void delete(int key) {
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+
+        DNode temp = head;
+
+        // Search for the node
+        while (temp != null && temp.data != key) {
+            temp = temp.next;
+        }
+
+        if (temp == null) {
+            System.out.println("Node does not exist");
+            return;
+        }
+
+        // If the node to delete is the head
+        if (temp == head) {
+            head = temp.next;
+            if (head != null) {
+                head.prev = null;
+            }
+        }
+        // If the node is in the middle or end
+        else {
+            if (temp.next != null) {
+                temp.next.prev = temp.prev;
+            }
+            if (temp.prev != null) {
+                temp.prev.next = temp.next;
+            }
+        }
+    }
+
+    public boolean search(int key){
+
+        if (head==null){
+            return false;
+        }
+
+        DNode temp=head;
+        while (temp!=null){
+            if (temp.data==key){
+                return true;
+            }
+            temp=temp.next;
+        }
+        return false;
+
+    }
+
 
     private void printBackWord() {
         DNode tail=head;
@@ -122,4 +178,5 @@ public class DoublyLinkedList {
         temp.next=newNode;
         newNode.prev=temp;
     }
+
 }

@@ -67,7 +67,7 @@ public class SingularLinkedList {
         }
         while (temp !=null){
             if (temp.data==num){
-                System.out.println("found at "+count+" number");
+
                 return true;
             }
             temp=temp.next;
@@ -75,20 +75,32 @@ public class SingularLinkedList {
         }
         return false;
     }
-    public void delete(int num) {
-        if (!search(num)){
-            System.out.println("number does not exist ");
+   public void delete(int n){
+
+        if (head==null){
+            System.out.println("empty list");
             return;
         }
-        Node current = head;
-        Node prev=null;
-        while(current!=null && current.data!=num){
-            prev=current;
-            current=current.next;
-        }
-        prev.next=current.next;
-    }
 
+        if (head.data==n){
+            head=head.next;
+            return;
+        }
+
+        Node temp=head;
+        Node prev=null;
+        while (temp!=null && temp.data != n){
+            prev=temp;
+            temp=temp.next;
+        }
+
+        if (temp==null){
+            System.out.println("Node not found");
+            return;
+        }
+
+        prev.next=temp.next;
+   }
     private int NthNode(int k) {
 
         if (k <= 0) {
@@ -150,6 +162,9 @@ public class SingularLinkedList {
 
         System.out.println(linkedList.middle());
 
+        linkedList.delete(2);
+//        linkedList.delete(3);
+        linkedList.printList();
 
     }
 
