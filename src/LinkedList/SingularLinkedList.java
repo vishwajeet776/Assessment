@@ -13,16 +13,16 @@ class Node{
 public class SingularLinkedList {
     Node head;
     public void insertEnd(int data){
-        Node newNode=new Node(data);
+        Node new_node=new Node(data);
         if (head==null){
-            head=newNode;
+            head=new_node;
             return;
         }
         Node temp=head;
-        while (temp.next != null){
+        while (temp.next!=null){
             temp=temp.next;
         }
-        temp.next=newNode;
+        temp.next=new_node;
     }
     public void printList(){
         Node temp=head;
@@ -172,7 +172,6 @@ public class SingularLinkedList {
 
         Node slow=head;
         Node fast=head;
-
         while (fast!=null && fast.next!=null){
             slow=slow.next;
             fast=fast.next.next;
