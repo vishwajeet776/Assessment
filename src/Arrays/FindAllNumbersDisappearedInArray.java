@@ -1,6 +1,8 @@
 package Arrays;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class FindAllNumbersDisappearedInArray {
     public static void main(String[] args) {
@@ -21,5 +23,6 @@ public class FindAllNumbersDisappearedInArray {
             }
         }
         System.out.println(list);
+        Stream s=list.stream().filter(x->x%2==0);
     }
 }
