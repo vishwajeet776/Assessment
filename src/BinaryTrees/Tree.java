@@ -20,20 +20,22 @@ class BinaryTree{
 
     private TreeNode root;
 
+
     public void add(int data){
         root=addRecursive(root,data);
     }
     private TreeNode addRecursive(TreeNode root,int data){
-     if (root==null){
-         return new TreeNode(data);
-     }
-     if (data < root.data){
-         root.left=addRecursive(root.left, data);
-     }else {
-         root.right=addRecursive(root.right, data);
-     }
-     return root;
+        if (root==null){
+            return new TreeNode(data);
+        }
+        if (data < root.data){
+            root.left=addRecursive(root.left, data);
+        }else {
+            root.right=addRecursive(root.right, data);
+        }
+        return root;
     }
+
 
     public void inorder(){
         inorderRecursive(root);
@@ -98,18 +100,17 @@ class BinaryTree{
         return heightRecursive(root);
     }
 
-   public int longestPath(){
+    public int longestPath(){
         return heightRecursive(root);
-   }
-   private int heightRecursive(TreeNode root){
+    }
+    private int heightRecursive(TreeNode root){
         if (root==null){
             return 0;
         }
-        int leftHeight=heightRecursive(root.left);
+        int leftheight=heightRecursive(root.left);
         int rightHeight=heightRecursive(root.right);
-
-        return Math.max(leftHeight,rightHeight)+1;
-   }
+        return Math.max(leftheight,rightHeight)+1;
+    }
 
    public int depth(int target){
         return depthRecursive(root,target);
@@ -242,6 +243,7 @@ class BinaryTree{
         }
 
     }
+
 }
 
 

@@ -21,8 +21,7 @@ public class MonotonicArray {
     public static void main(String[] args) {
        int[] nums = {1,2,2,3};
        int prev=0;
-       int current=0+1;
-       int next=0+2;
+
 
     }
 }

@@ -13,6 +13,7 @@ public class InsertionSort {
             }
             arr[j+1]=key;
         }
+
         for (int i:arr){
             System.out.print(i+" ");
         }
